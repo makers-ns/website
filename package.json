@@ -12,5 +12,10 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"format": "npx prettier -w ."
+	},
+	"dependencies": {
+		"@littlesticks/odyssey-theme-components": "^0.0.23",
+		"astro": "^1.6.0",
+		"package.json": "^2.0.1"
 	}
 }

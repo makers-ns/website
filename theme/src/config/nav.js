@@ -1,18 +1,14 @@
 export const nav = [
 	{
-		title: 'Home',
+		title: 'Početna',
 		slug: '/',
 	},
 	{
-		title: 'Blog',
-		slug: '/blog',
+		title: 'O nama',
+		slug: '/about',
 	},
 	{
-		title: 'About',
-		slug: '/company/about',
-	},
-	{
-		title: 'Contact',
-		slug: '/company/contact',
+		title: 'Kontakt',
+		slug: '/contact',
 	},
 ];

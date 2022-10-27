@@ -1,94 +1,140 @@
 ---
-import { Container, FeatureCard} from '@littlesticks/odyssey-theme-components';
-
+import { Icon } from 'astro-icon';
+import {
+	AnnouncementBar,
+	Button,
+	CustomerQuoteSection,
+	ThreeColumnTextSection,
+	YouTubeEmbedSection,
+	StickyTextImageSection,
+	CtaCardSection,
+} from '@littlesticks/odyssey-theme-components';
 import Layout from '../layouts/Page.astro';
-import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import TextAndImageHero from '../components/sections/heros/TextAndImageHero.astro';
+
+const seo = {
+	title: 'Mejker',
+	description: 'Udruženje "Mejker Srbija"',
+};
 ---
 
-<Layout>
-	<HomeHeroSection />
-	<Container>
-		<section class="feature-card__section">
-			<h2>Landing Pages</h2>
+<!-- Ovo je zgodno ako bude bilo nekih dogadjaja pa da ih reklamiramo -->
+<!-- <AnnouncementBar
+	text="Read Our Latest Blog Post"
+	href="/blog/posts/remote-work-mental-health/"
+	slot="announcement-bar"
+/> -->
+<Layout {seo}>
+	<TextAndImageHero reversed>
+		<div slot="text-container">
+			<h1>Udruženje "Mejker Srbija"</h1>
 			<p>
-				Use one of our landing pages to jumpstart your website or
-				ad campaign.
+				Udruženje entuzijasta za robotiku, elektroniku, programiranje i IoT koje
+				nesebično deli svo stečeno znanje.
 			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/landing-pages/landing-1" title="Landing Page 1" imgSrc="/assets/images/home/screenshots/landing-1">
-				</FeatureCard>
-				<FeatureCard href="/landing-pages/landing-2" title="Landing Page 2" imgSrc="/assets/images/home/screenshots/landing-2">
-				</FeatureCard>
-        <FeatureCard href="#" title="Landing Page 3" imgSrc="/assets/images/home/screenshots/landing-3">
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+		</div>
+		<!-- <div slot="btns-container">
+			<Button href="/theme/get-started" customIcon
+				>Get Started <Fragment slot="icon">
+					<Icon name="ic:baseline-chevron-right" />
+				</Fragment></Button
+			>
+		</div> -->
+		<picture slot="image-container">
+			<img
+				src="/assets/images/landing-1/landing-hero-1.jpg"
+				alt="Astro Odyssee"
+				id="home-hero-image"
+			/>
+		</picture>
+	</TextAndImageHero>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Company Pages</h2>
+	<!-- Ubaciti citat Nikole Tesle koji je Bofa spomenuo na BalCCon 2015 -->
+	<CustomerQuoteSection
+		quoteText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, vero nobis? Voluptas assumenda, voluptatibus commodi qui ducimus delectus praesentium maiores, impedit iure labore ratione, ea facilis numquam doloremque aperiam aspernatur."
+		customerName="Happy Customer"
+	/>
+
+	<ThreeColumnTextSection>
+		<div slot="column-1-body">
+			<h2>Ko?</h2>
 			<p>
-				Use one of our prebuilt company pages for your about page, contact page,
-				legal pages, blog posts, etc.
+				Mi smo studenti, profesori, industrisjki eksperti, hobisti, geek-ovi i
+				nerd-ovi koji vole da se igraju sa novim tehnologijama, istražuju i uče.
+				Od 2015. godine organizujemo sastanke, radionice i predavanja i širimo
+				znanje koje smo stekli kroz zajednička iskustva.
 			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/company/about" title="About Page" imgSrc="/assets/images/home/screenshots/about">
-				</FeatureCard>
-				<FeatureCard href="/company/contact" title="Contact Page" imgSrc="/assets/images/home/screenshots/contact">
-				</FeatureCard>
-				<FeatureCard href="/blog/" title="Blog Page" imgSrc="/assets/images/home/screenshots/blog">
-				</FeatureCard>
-				<FeatureCard
-					href="/blog/posts/remote-work-mental-health"
-					title="Blog Post"
-          imgSrc="/assets/images/home/screenshots/blog-post"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/company/legal"
-					imgSrc="/assets/images/home/screenshots/legal"
-					title="Legal Page"
-				>
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+		</div>
+		<!-- <Button slot="column-1-cta">Learn More</Button> -->
+		<div slot="column-2-body">
+			<h2>Gde?</h2>
+			<p>
+				Većina naših članova se nalazi u Novom Sadu u Srbiji ali imamo članove i
+				prijatelje širom Srbije, Balkana pa i sveta. Svi su dobro došli da nam
+				se pridruže.
+			</p>
+		</div>
+		<!-- <Button slot="column-2-cta" outlined>Learn More</Button> -->
+		<div slot="column-3-body">
+			<h2>Šta?</h2>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorem
+				tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
+				consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
+				mollitia cumque. Velit.
+			</p>
+		</div>
+		<!-- <Button slot="column-3-cta">Learn More</Button> -->
+	</ThreeColumnTextSection>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Theme Pages</h2>
-			<p>Learn more about how to set up and use the Odyssey Theme.</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/theme/get-started"
-					imgSrc="/assets/images/home/screenshots/get-started"
-					title="Get Started"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/theme/style-guide"
-					imgSrc="/assets/images/home/screenshots/style-guide"
-					title="Style Guide"
-				>
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+	<!-- <YouTubeEmbedSection url="https://www.youtube.com/watch?v=cbYr75_R15M" rounded
+	/> -->
+
+	<StickyTextImageSection>
+		<div slot="text-container">
+			<h2>Iskustvo i dosadašnja dešavanja</h2>
+			<h3>Maker Fest</h3>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorem
+				tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
+				consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
+				mollitia cumque. Velit.
+			</p>
+			<h3>Srednjškolska sekcija</h3>
+			<!-- Ovde napomenuti i IoT sekciju u Jovinoj i PFE sekciju sa kojom sada saradjujemo -->
+			<p>
+				Već 6 godina se okupljamo i delimo iskustva u Gimnaziji Jovan Jovanović
+				Zmaj. Za srednoškolce postoje predavanja svake nedelje, a pored
+				predavanja realizujemo i projekte sa kojima učestvujemo na sajmovima i
+				konferencijama.
+			</p>
+			<h3>Radionice</h3>
+			<!-- Ovde pisati o radionicama koje su se do sada odrzavale i koje planiramo da odrzavamo na faksu i van njega -->
+			<p></p>
+		</div>
+		<!-- Neka lepa slika ovde sa radionice ili Maker Festa :) -->
+		<picture slot="image-container">
+			<img
+				src="/assets/images/landing-1/landing-sticky.jpg"
+				alt="Astro Odyssey"
+				loading="lazy"
+			/>
+		</picture>
+	</StickyTextImageSection>
+
+	<CtaCardSection
+		background="var(--theme-surface-2)"
+		color="var(--theme-on-surface-2)"
+	>
+		<h2>Pridružite nam se!</h2>
+		<p>
+			Ako želite da se pridružite udruženju, učestvujete u organizaciji događaja
+			i radionica ili imate neke svoje ideje za saradnju kontaktirajte nas.
+		</p>
+		<Button href="/contact" customIcon
+			>Kontakt <Fragment slot="icon">
+				<Icon name="ic:baseline-chevron-right" />
+			</Fragment></Button
+		>
+	</CtaCardSection>
 </Layout>
-
-<style>
-	.feature-card__section {
-		margin: var(--section-margin) auto;
-	}
-	.feature-card__grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--theme-grid-gap);
-	}
-	@media (max-width: 768px) {
-		.feature-card__grid {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
