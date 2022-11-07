@@ -2,24 +2,24 @@ export const footerSocials = [
 	{
 		name: 'Twitter',
 		url: 'https://twitter.com/littlesticksdev',
-		icon: "mdi:twitter",
+		icon: 'mdi:twitter',
 	},
 	{
 		name: 'Youtube',
 		url: 'https://youtube.com/c/LittleSticks',
-		icon: "mdi:youtube",
+		icon: 'mdi:youtube',
 	},
 	{
 		name: 'Github',
 		url: 'https://github.com/littlesticks',
-		icon: "mdi:github",
+		icon: 'mdi:github',
 	},
 	{
 		name: 'Discord',
 		url: 'https://littlesticks.dev/discord',
-		icon: "ic:baseline-discord",
+		icon: 'ic:baseline-discord',
 	},
-]
+];
 
 export const footerLists = [
 	{
@@ -74,7 +74,7 @@ export const footerLists = [
 			{
 				title: 'Customizing Odyssey',
 				slug: '/theme/customizing-odyssey',
-			}
+			},
 		],
 	},
 ];
