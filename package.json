@@ -10,8 +10,7 @@
 		"dev": "astro dev",
 		"start": "astro dev",
 		"build": "astro build",
-		"preview": "astro preview",
-		"format": "npx prettier -w ."
+		"preview": "astro preview"
 	},
 	"devDependencies": {
 		"@astrojs/image": "^0.7.0",
