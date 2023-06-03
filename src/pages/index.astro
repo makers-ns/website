@@ -1,9 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
 import Button from "../components/buttons/Button.astro";
-import CustomerQuoteSection from "../components/sections/CustomerQuoteSection.astro";
-import ThreeColumnTextSection from "../components/sections/ThreeColumnTextSection.astro";
-import StickyTextImageSection from "../components/sections/StickyTextImageSection.astro";
 import CtaCardSection from "../components/sections/CtaCardSection.astro";
 import Layout from '../layouts/Page.astro';
 import TextAndImageHero from '../components/sections/heros/TextAndImageHero.astro';
@@ -29,13 +26,6 @@ const seo = {
 				nesebično deli svo stečeno znanje.
 			</p>
 		</div>
-		<!-- <div slot="btns-container">
-			<Button href="/theme/get-started" customIcon
-				>Get Started <Fragment slot="icon">
-					<Icon name="ic:baseline-chevron-right" />
-				</Fragment></Button
-			>
-		</div> -->
 		<picture slot="image-container">
 			<img
 				src="/assets/hero.jpg"
@@ -44,79 +34,6 @@ const seo = {
 			/>
 		</picture>
 	</TextAndImageHero>
-
-	<!-- Ubaciti citat Nikole Tesle koji je Bofa spomenuo na BalCCon 2015 -->
-	<CustomerQuoteSection
-		quoteText="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, vero nobis? Voluptas assumenda, voluptatibus commodi qui ducimus delectus praesentium maiores, impedit iure labore ratione, ea facilis numquam doloremque aperiam aspernatur."
-		customerName="Happy Customer"
-	/>
-
-	<ThreeColumnTextSection>
-		<div slot="column-1-body">
-			<h2>Ko?</h2>
-			<p>
-				Mi smo studenti, profesori, industrisjki eksperti, hobisti, geek-ovi i
-				nerd-ovi koji vole da se igraju sa novim tehnologijama, istražuju i uče.
-				Od 2015. godine organizujemo sastanke, radionice i predavanja i širimo
-				znanje koje smo stekli kroz zajednička iskustva.
-			</p>
-		</div>
-		<!-- <Button slot="column-1-cta">Learn More</Button> -->
-		<div slot="column-2-body">
-			<h2>Gde?</h2>
-			<p>
-				Većina naših članova se nalazi u Novom Sadu u Srbiji ali imamo članove i
-				prijatelje širom Srbije, Balkana pa i sveta. Svi su dobro došli da nam
-				se pridruže.
-			</p>
-		</div>
-		<!-- <Button slot="column-2-cta" outlined>Learn More</Button> -->
-		<div slot="column-3-body">
-			<h2>Šta?</h2>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorem
-				tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
-				consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
-				mollitia cumque. Velit.
-			</p>
-		</div>
-		<!-- <Button slot="column-3-cta">Learn More</Button> -->
-	</ThreeColumnTextSection>
-
-	<!-- <YouTubeEmbedSection url="https://www.youtube.com/watch?v=cbYr75_R15M" rounded
-	/> -->
-
-	<StickyTextImageSection>
-		<div slot="text-container">
-			<h2>Iskustvo i dosadašnja dešavanja</h2>
-			<h3>Maker Fest</h3>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Est dolorem
-				tempore odio! Nemo consectetur ipsa aperiam similique maxime maiores
-				consequatur explicabo ut quibusdam fugiat corporis, dignissimos tenetur,
-				mollitia cumque. Velit.
-			</p>
-			<h3>Srednjškolska sekcija</h3>
-			<!-- Ovde napomenuti i IoT sekciju u Jovinoj i PFE sekciju sa kojom sada saradjujemo -->
-			<p>
-				Već 6 godina se okupljamo i delimo iskustva u Gimnaziji "Jovan Jovanović
-				Zmaj". Za srednoškolce postoje predavanja svake nedelje, a pored
-				predavanja realizujemo i projekte sa kojima učestvujemo na sajmovima i
-				konferencijama.
-			</p>
-			<h3>Radionice</h3>
-			<!-- Ovde pisati o radionicama koje su se do sada odrzavale i koje planiramo da odrzavamo na faksu i van njega -->
-			<p></p>
-		</div>
-		<!-- Neka lepa slika ovde sa radionice ili Maker Festa :) -->
-		<picture slot="image-container">
-			<img
-				src="/assets/sticky.jpg"
-				alt="Astro Odyssey"
-				loading="lazy"
-			/>
-		</picture>
-	</StickyTextImageSection>
 
 	<CtaCardSection
 		background="var(--theme-surface-2)"
