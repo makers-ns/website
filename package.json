@@ -8,12 +8,12 @@
 	},
 	"scripts": {
 		"dev": "astro dev",
+		"dev-ctr": "astro dev --host",
 		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview"
 	},
 	"devDependencies": {
-		"@astrojs/image": "^0.18.0",
 		"@astrojs/lit": "^1.0.1",
 		"@astrojs/mdx": "^0.8.2",
 		"@astrojs/sitemap": "^0.1.0",
