@@ -1,0 +1,647 @@
+---
+import Layout from "../layouts/Page.astro";
+import Container from "../components/core/Container.astro";
+import { Icon } from "astro-icon";
+
+const seo = {
+  title: "Događaji - Mejker",
+  description: "Prošli događaji udruženja Mejker Srbija",
+};
+
+// Past events data from meetup history
+const events = [
+  {
+    title: "LoRaWan Meetup (Šabac)",
+    date: "28. avgust 2019.",
+    description: "Tema meetup-a je LoRaWan mrežni protokol komunikacije zasnovan na LoRa (Low-Rate Long-Range) tehnici modulacije signala.",
+    location: "Start IT centar Šabac",
+    link: "https://www.meetup.com/makers-ns/events/264244179/",
+    image: "/meetup_events_images/456578567.jpeg",
+  },
+  {
+    title: "Raspberry Pi @ StartIt Centar Šabac",
+    date: "1. avgust 2019.",
+    description: "Predavanje o različitim mogućnostima korišćenja uređaja Raspberry Pi.",
+    location: "Start IT centar Šabac",
+    link: "https://www.meetup.com/makers-ns/events/263505452/",
+    image: "/meetup_events_images/263505452.jpg",
+  },
+  {
+    title: "MAKER FEST 2019",
+    date: "8. jun 2019.",
+    description: "Međunarodna manifestacija na kojoj će se okupiti ljubitelji elektronike, robotike, 3D tehnologija i sličnih digitalnih tehnologija.",
+    location: "Мастер Центар, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/261810075/",
+    image: "/meetup_events_images/261810075.jpg",
+  },
+  {
+    title: "ROS - Robot Operating System",
+    date: "19. april 2019.",
+    description: "Robot Operation System (ROS) sve više pronalazi put do entuzijasta i mejkera. Pored toga svedoci smo sve veće primene i u industriji.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/260452200/",
+    image: "/meetup_events_images/260452200.jpg",
+  },
+  {
+    title: "Arduino Dan",
+    date: "16. mart 2019.",
+    description: "Tradicionalni Arduino Dan zajedno organizuju Udruženje \"Mejker\" i iDeaLab Novi Sad.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/259506064/",
+    image: "/meetup_events_images/259506064.jpg",
+  },
+  {
+    title: "Svečani skup - Maker NS & iDEAlab",
+    date: "21. decembar 2018.",
+    description: "Još jedna godina je iza nas. Bila je uspešna, sa puno sjajnih aktivnosti, a naročito \"Maker Fest 2018\" i \"FabNS Pilot\".",
+    location: "iDEAlab, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/257034602/",
+    image: "/meetup_events_images/257034602.jpg",
+  },
+  {
+    title: "FABNovi Sad Pilot",
+    date: "13. oktobar 2018.",
+    description: "Digitalna fabrikacija, bioprinting, mikrofluidika, neuronauka ... Sve su to tehnilogije kojima se predviđa primena u budućnosti.",
+    location: "Rektorat, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/254908789/",
+    image: "/meetup_events_images/254908789.jpg",
+  },
+  {
+    title: "Mikroelektronika u Poslovnom inkubatoru",
+    date: "27. jun 2018.",
+    description: "Predstavljanje Mikroelektronike i Nebojše Matića. Sjajna prilika da se saznaju informacije o kompaniji i njenim proizvodima.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/251984343/",
+    image: "/meetup_events_images/251984343.jpg",
+  },
+  {
+    title: "MAKER FEST 2018",
+    date: "9. jun 2018.",
+    description: "Međunarodna manifestacija na kojoj će se okupiti ljubitelji elektronike, robotike, 3D tehnologija i sličnih digitalnih tehnologija.",
+    location: "Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/251334597/",
+    image: "/meetup_events_images/251334597.jpg",
+  },
+  {
+    title: "Mejkerska radionica na ZINC: How to use proxy in security testing",
+    date: "31. maj 2018.",
+    description: "Ivan Markovic will guide you into the world of Internet Security. This is a starter course for those jumping into the world of web applications security testing.",
+    location: "Rektorat, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/250880841/",
+  },
+  {
+    title: "Mejkerske radionice na FABELGRADE 2018",
+    date: "28. april 2018.",
+    description: "Tokom Fabelgrade 2018, Makers Novi Sad će biti aktivan učesnik sa radionicama i prezentacijama projekata.",
+    location: "Dom Omladine, Beograd",
+    link: "https://www.meetup.com/makers-ns/events/249715948/",
+    image: "/meetup_events_images/249715948.jpg",
+  },
+  {
+    title: "Uvod u IoT bezbednost",
+    date: "22. mart 2018.",
+    description: "U današnjem svetu pametnih uređaja skoro da i ne stižemo da obratimo pažnju na posledice deljenja naših privatnih podataka.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/248658864/",
+  },
+  {
+    title: "LoRaWAN - The Things Network Novi Sad",
+    date: "8. februar 2018.",
+    description: "U proteklom periodu uspeli smo svi zajedno da postavimo početnu infrastrukturu u Novom Sadu sa nekoliko aktivnih TTN gejtveja.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/247482123/",
+    image: "/meetup_events_images/247482123.jpg",
+  },
+  {
+    title: "The Things Network Novi Sad",
+    date: "21. decembar 2017.",
+    description: "Kraj godine obeležavamo sa jednom sjajnom temom: The Things Network - Novi Sad. Početak rada na projektu postavljanja LoRaWAN infrastrukture.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/245808286/",
+    image: "/meetup_events_images/245808286.jpg",
+  },
+  {
+    title: "Particle Photon - IoT workshop",
+    date: "9. decembar 2017.",
+    description: "Particle Photon je jedna od najpopularnijih platformi izvan Arduino porodice uređaja. Ono što je manje poznato je Particle cloud platforma.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/245492565/",
+  },
+  {
+    title: "RISC-V - od Arduina do superkompjutera",
+    date: "10. novembar 2017.",
+    description: "RISC-V je nova, otvorena arhitektura skupa instrukcija procesora, nastala na Kalifornijskom univerzitetu u Berkeleyu.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/244866721/",
+  },
+  {
+    title: "Azure IoT Hub - what's new",
+    date: "19. oktobar 2017.",
+    description: "Pred Microsoft Sinergiju 2017 okupljamo se da pogledamo šta je Microsoft implementirao u Azure IoT Hub u proteklom periodu.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/244081829/",
+  },
+  {
+    title: "AllThingsTalk - IoT Cloud platforma",
+    date: "28. septembar 2017.",
+    description: "Želite da napravite svoje Internet of Things rešenje, ali vam nedostaje jednostavna cloud platforma?",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/243543188/",
+  },
+  {
+    title: "Mejkerske radionice na Balkonu 2017",
+    date: "15. septembar 2017.",
+    description: "Pozivamo sve članove i prijatelje da nam se pridruže u Master centru tokom Balkona 2017.",
+    location: "Novosadski sajam - Master centar",
+    link: "https://www.meetup.com/makers-ns/events/243038380/",
+  },
+  {
+    title: "Season opening",
+    date: "31. avgust 2017.",
+    description: "Dugo toplo leto je iza nas. Prethodnu sezonu smo završili sa sjajnim manifestacijama kao što su Maker Fest 2017 i Maker Faire Vienna.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/242792214/",
+  },
+  {
+    title: "IoT Meetup + Garage Lab launch @ Playground",
+    date: "15. jun 2017.",
+    description: "Pozivamo vas da se prijavite na otvaranje Garage Lab u okviru ICT Hub-a u Beogradu.",
+    location: "ICT Hub, Beograd",
+    link: "https://www.meetup.com/makers-ns/events/240663710/",
+  },
+  {
+    title: "MAKER FEST 2017",
+    date: "3. jun 2017.",
+    description: "Nakon mnogobrojnih uspešnih radionica i predavanja, došao je red i da organizujemo jednu veliku i interesantnu manifestaciju Maker Fest.",
+    location: "Novosadski sajam - Master centar",
+    link: "https://www.meetup.com/makers-ns/events/239904154/",
+  },
+  {
+    title: "WORKSHOP: Make your own BLE device @ ZINC 2017",
+    date: "1. jun 2017.",
+    description: "Zbog velikog interesovanja ponovo pričamo o Bluetooth Low Energy. Jeste li već čuli za BLE?",
+    location: "Rektorat, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/240263920/",
+  },
+  {
+    title: "Emagine - Izložba radova",
+    date: "13. maj 2017.",
+    description: "Pozivamo vas na konferenciju pod nazivom Emagine, na kojoj će se predstaviti u okviru izložbenog programa i najmlađi članovi mejkerske zajednice.",
+    location: "Belexpo, Beograd",
+    link: "https://www.meetup.com/makers-ns/events/239517372/",
+  },
+  {
+    title: "Arduino Day 2017",
+    date: "1. april 2017.",
+    description: "Pridružite nam se na manifestaciji koja se širom sveta obeležava i slavi Arduino platformu.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/238555601/",
+  },
+  {
+    title: "Sajam obrazovanja - Kreativna radionica",
+    date: "6. mart 2017.",
+    description: "Tokom trodnevnog Sajma obrazovanja u Novom Sadu, organizujemo manifestaciju Kreativna radionica zajedno sa nekoliko srednjoškolskih sekcija.",
+    location: "Novosadski sajam - Master centar",
+    link: "https://www.meetup.com/makers-ns/events/238039086/",
+  },
+  {
+    title: "Microsoft Azure SQL & WebApp for IoT",
+    date: "4. februar 2017.",
+    description: "Nakon svih praznika i nadamo se kraja ovog ledenog doba, vreme je da se malo zagrejemo sa novostima u Microsoft Azure platformi.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/237228441/",
+  },
+  {
+    title: "Novogodišnji skup",
+    date: "22. decembar 2016.",
+    description: "Iza nas je jedna veoma uzbudljiva i uspešna godina. Radili smo puno, i veliko mi je zadovoljstvo što smo postigli odlične rezultate.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/236188926/",
+  },
+  {
+    title: "Hacking BLE - Hackster workshop",
+    date: "3. decembar 2016.",
+    description: "Šta je BLE? Kako da napravimo svoj sopstveni BLE uređaj? Kako uspostaviti komunikaciju sa BLE uređajem sa Android ili NodeJS aplikacijom?",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/235764448/",
+  },
+  {
+    title: "IoT & Smart services - Hackster @ devhubNS",
+    date: "24. novembar 2016.",
+    description: "Ovaj skup organizujemo zajedno sa grupom devHub. Predavanja o Internet of Things tehnologijama.",
+    location: "Rektorat, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/235646701/",
+  },
+  {
+    title: "Saturday hacking - Hackster Blynk",
+    date: "12. novembar 2016.",
+    description: "Nastavljamo sa mejkerskim radionicama. Posredstvom Hackster-a, dobili smo Sparkfun Blynk platforme.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/235337476/",
+  },
+  {
+    title: "Hackster workshop - INTEL",
+    date: "29. oktobar 2016.",
+    description: "Stigle su Arduino 101 razvojne ploče bazirane na Intel Curie procesoru. Pozivamo mejkere da zajedno testiramo i proučimo uređaje bazirane na Intel platformi.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/235076795/",
+  },
+  {
+    title: "Exhibition @ Educational Sinergija 2016",
+    date: "19. oktobar 2016.",
+    description: "During this great Microsoft event, Hackster Live Serbia and Association Maker, together with Microsoft will organize workshops and exhibition.",
+    location: "Crowne Plaza Belgrade, Beograd",
+    link: "https://www.meetup.com/makers-ns/events/234951345/",
+  },
+  {
+    title: "Cloud for maker",
+    date: "6. oktobar 2016.",
+    description: "Prvu radionicu posle letnje pauze posvećujemo Cloud platformama raznih provajdera (Microsoft, IBM, Amazon, Samsung, Google).",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/234533436/",
+  },
+  {
+    title: "Microsoft Azure IoT & Intel Edison - Beograd!",
+    date: "14. septembar 2016.",
+    description: "Sa velikim zadovoljstvom objavljujemo poziv na prvo naše okupljanje u Beogradu! Veoma nam je drago, što je za taj događaj mesto okupljanja u prostorijama Microsoft Srbija.",
+    location: "Microsoft Srbija, Beograd",
+    link: "https://www.meetup.com/makers-ns/events/233920769/",
+  },
+  {
+    title: "Mejkerske radionice na Balkonu 2016",
+    date: "10. septembar 2016.",
+    description: "Pozivamo sve članove i prijatelje da nam se pridruže u Master centru tokom Balkona 2016.",
+    location: "Novosadski sajam - Master centar",
+    link: "https://www.meetup.com/makers-ns/events/233851127/",
+  },
+  {
+    title: "3D tehnologija - od ideje do stvarnosti",
+    date: "16. avgust 2016.",
+    description: "Na prvom skupu posvećenom 3D tehnologiji, organizovaćemo uvodno predavanje o 3D tehnologijama koje će održati Borko Jovanović iz Polyhedra.",
+    location: "Levi 9, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/233160545/",
+  },
+  {
+    title: "Hacking Intel Edison #2",
+    date: "12. jul 2016.",
+    description: "Na ovom meetup-u radimo test programiranje Intel Edison-a. Nakon prve radionice na kojoj smo se upoznali sa raznim alatima za razvoj.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/232399434/",
+  },
+  {
+    title: "Intel Internet of Things workshop",
+    date: "5. jul 2016.",
+    description: "Posredstvom Hackster-a, stigli su nam Intel Edison platforme. Za razliku od dosadašnjih skupova, ovaj planiramo da bude više praktičan.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/232128850/",
+  },
+  {
+    title: "Hacking robots",
+    date: "23. jun 2016.",
+    description: "Prva radionica posvećena robotici. Prvo okupljanje u Somboru, gde će učenici dve škole da podele svoje znanje i umeće.",
+    location: "Srednja tehnička škola, Sombor",
+    link: "https://www.meetup.com/makers-ns/events/232103040/",
+  },
+  {
+    title: "Wireless Day - ZigBee & LoRa",
+    date: "18. jun 2016.",
+    description: "Za ovaj skup smo predvideli da prodiskutujemo o možda i najvažnijem elementu i najvećem izazovu u oblasti Internet of Things: bežične komunikacije.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/231742419/",
+  },
+  {
+    title: "European Maker Week",
+    date: "4. jun 2016.",
+    description: "Povodom evropske nedelje mejkera (EMWeek 2016) u svečanoj sali Gimnazije Jovan Jovanović Zmaj održaćemo prezentaciju rada sekcije.",
+    location: "Gimnazija Jovan Jovanović Zmaj, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/231604908/",
+  },
+  {
+    title: "Particle workshop @ Zinc",
+    date: "2. jun 2016.",
+    description: "Let's make some Internet of Things together. We will guide you through hands-on exercises with Particle Photon.",
+    location: "Rektorat, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/231331816/",
+  },
+  {
+    title: "First step with Arduino - Hackster School",
+    date: "28. maj 2016.",
+    description: "Napravite svoje prve korake u radu na Arduino platformi. Tokom Evropske nedelje mejkera organizujemo radionicu za početnike.",
+    location: "Gimnazija Laza Kostić, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/231345847/",
+  },
+  {
+    title: "Azure IoT & Particle - Hackster event",
+    date: "14. maj 2016.",
+    description: "Microsoft Azure IoT i Particle Photon. U okviru Hackster Live programa, pripremljena je radionica na temu Microsoft Azure IoT platforme.",
+    location: "Levi 9, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/230399704/",
+  },
+  {
+    title: "IoT dan u svetu / meetup Novi Sad - Beograd",
+    date: "8. april 2016.",
+    description: "U sklopu IoT Day u svetu, pridružujemo se meetup-u koji organizuje Internet of Things Novi Sad.",
+    location: "Poslovni inkubator Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/230074097/",
+  },
+  {
+    title: "Arduino Day 2016 - Hackster event",
+    date: "2. april 2016.",
+    description: "Radionice za učenike, predavanja o Arduino platformama i izložba projekata.",
+    location: "Gimnazija Laza Kostić, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/229221616/",
+  },
+  {
+    title: "Makers ZR - Srbija & Rumunija zajedno",
+    date: "19. mart 2016.",
+    description: "Idemo u Zrenjanin da se upoznamo sa kolegama iz ovog lepog banatskog grada, da ugostimo prijatelje iz Rumunije.",
+    location: "Poslovni inkubator Zrenjanin",
+    link: "https://www.meetup.com/makers-ns/events/229531615/",
+  },
+  {
+    title: "Saturday Hack Fever - Hackster event",
+    date: "27. februar 2016.",
+    description: "Hacking hardware Cypress, Dragonboard, BeagleBone, Texas Instruments. Testiramo, probamo, učimo.",
+    location: "Gimnazija Laza Kostić, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/228663970/",
+  },
+  {
+    title: "Texas Instruments Day",
+    date: "23. januar 2016.",
+    description: "Pokušaćemo da ovaj meetup napravimo interesantan i zanimljiv. Glavna tema će biti prezentacija velike ponude Texas Instruments (TI) u oblasti IoT.",
+    location: "Gimnazija Laza Kostić, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/227833050/",
+  },
+  {
+    title: "Mikroelektronika & Azure website",
+    date: "5. decembar 2015.",
+    description: "Pre nego što nas uhvate božićne i novogodišnje zabave, da se okupimo i pogledamo (među prvima u svetu), prvi srpski proizvod u porodici Arduino - Flip & Click.",
+    location: "Gimnazija Laza Kostić, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/227039743/",
+  },
+  {
+    title: "BeagleBone vs Raspberry Pi",
+    date: "11. oktobar 2015.",
+    description: "Na ovom meetup-u se fokusiramo na dva uređaja koja su najpopularnija na tržištu mikrokontrolera baziranih na ARM procesorima i Linux OS.",
+    location: "Kafe Sting, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/225841892/",
+  },
+  {
+    title: "Makers NS okupljanje",
+    date: "13. septembar 2015.",
+    description: "Vreme je da počnemo sa okupljanjem. U nedelju 13. septembra u sklopu održavanja BalCCon 2015.",
+    location: "Muzej savremene umetnosti Vojvodine, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/225198799/",
+  },
+  {
+    title: "Senzations Meetup",
+    date: "4. septembar 2015.",
+    description: "Poslednji dan letnje škole Internet of Things Senzations'15 se održava u Privrednoj komori Beograda i otvoren je i za sve koji su zainteresovani.",
+    location: "Privredna komora Beograda",
+    link: "https://www.meetup.com/makers-ns/events/224784660/",
+  },
+  {
+    title: "Internet of Things Group MeetUP",
+    date: "1. jul 2015.",
+    description: "Pozivamo vas da dođete na MeetUp grupe Internet of Things Novi Sad.",
+    location: "DunavNET, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/223599004/",
+  },
+  {
+    title: "Prvi radni sastanak - First MeetUp",
+    date: "27. jun 2015.",
+    description: "Prvo okupljanje na kojem smo se upoznali, razmenili ideje i predstavili planove i projekte kojima želimo da se bavimo.",
+    location: "Kafe Sting, Novi Sad",
+    link: "https://www.meetup.com/makers-ns/events/223402107/",
+    image: "/meetup_events_images/223402107.jpeg",
+  },
+];
+---
+
+<Layout {seo}>
+  <Container>
+    <div class="events-header">
+      <h1>Naši Događaji</h1>
+      <p class="events-intro">
+        Pregled prošlih događaja, radionica i okupljanja koje smo organizovali
+        kao udruženje. Pratite naše aktivnosti i pridružite nam se na sledećim
+        događajima!
+      </p>
+    </div>
+
+    <div class="events-list">
+      {events.map((event) => (
+        <article class="event-card">
+          {event.image && (
+            <div class="event-image">
+              <img src={event.image} alt={event.title} loading="lazy" />
+            </div>
+          )}
+          <div class="event-content">
+            <div class="event-meta">
+              <span class="event-date">
+                <Icon name="ic:baseline-calendar-today" />
+                {event.date}
+              </span>
+              <span class="event-location">
+                <Icon name="ic:baseline-place" />
+                {event.location}
+              </span>
+            </div>
+            <h2>{event.title}</h2>
+            <p>{event.description}</p>
+            {event.link && (
+              <a href={event.link} target="_blank" rel="noopener noreferrer" class="event-link">
+                Više informacija
+                <Icon name="ic:baseline-arrow-forward" />
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="cta-section">
+      <h2>Želite da učestvujete?</h2>
+      <p>
+        Kontaktirajte nas ako želite da organizujete radionicu, učestvujete u
+        pripremi događaja ili imate ideju za saradnju.
+      </p>
+      <a href="/contact" class="cta-button">
+        Kontaktirajte nas
+        <Icon name="ic:baseline-chevron-right" />
+      </a>
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  .events-header {
+    text-align: center;
+    margin: 3rem 0;
+  }
+
+  .events-header h1 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: 1rem;
+  }
+
+  .events-intro {
+    font-size: var(--font-size-lg);
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .events-list {
+    display: grid;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .event-card {
+    background: var(--theme-surface-1);
+    border-radius: var(--theme-shape-radius);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .event-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .event-card:hover .event-image img {
+    transform: scale(1.05);
+  }
+
+  .event-content {
+    padding: 2rem;
+  }
+
+  .event-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    font-size: var(--font-size-sm);
+    opacity: 0.8;
+  }
+
+  .event-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .event-meta [data-icon] {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .event-date, .event-location {
+    display: flex;
+    align-items: center;
+  }
+
+  .event-card h2 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: 1rem;
+    color: var(--theme-primary);
+  }
+
+  .event-card p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .event-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--theme-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: gap 0.2s ease;
+  }
+
+  .event-link:hover {
+    gap: 0.75rem;
+  }
+
+  .event-link [data-icon] {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .cta-section {
+    text-align: center;
+    margin: 4rem 0;
+    padding: 3rem 2rem;
+    background: var(--theme-surface-2);
+    border-radius: var(--theme-shape-radius);
+  }
+
+  .cta-section h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    font-size: var(--font-size-lg);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--theme-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--theme-shape-radius);
+    font-weight: 600;
+    transition: transform 0.2s ease, gap 0.2s ease;
+  }
+
+  .cta-button:hover {
+    transform: scale(1.05);
+    gap: 0.75rem;
+  }
+
+  .cta-button [data-icon] {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .event-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .events-header h1 {
+      font-size: var(--font-size-3xl);
+    }
+
+    .event-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
