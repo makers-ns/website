@@ -38,15 +38,19 @@
   {
     "id": "zinc-2023",
     "title": "Building a Motorized Maze Rig with Makers",
-    "date": "29. maj 2023.",
-    "dateTime": "2023-05-29T12:00:00+02:00",
+    "date": "30. maj 2023.",
+    "dateTime": "2023-05-30T16:00:00+02:00",
     "location": "ZINC 2023, Novi Sad",
     "venue": "ZINC 2023 – Zooming Innovation in Consumer Technologies, Novi Sad",
     "summary": "Radionica na konferenciji ZINC 2023: osnove računarskog vida i robotike kroz rešavanje lavirinta uz OpenCV, Arduino i Raspberry Pi.",
     "description": "In this workshop, participants will learn the basics of computer vision and robotics by solving a maze with their own heuristic algorithm. Participants will use OpenCV, Arduino, and Raspberry Pi to create a maze recognition and ball position tracking system, and they will implement their own maze-solving algorithm. They will learn how to tilt the maze and guide the ball from the start to the finish. Participants will be introduced to the fundamental concepts of computer vision and image processing, as well as the basics of robotics. Participants will work individually and program in Python using a set of Lego bricks and electronic components including Arduino and Raspberry Pi, camera, and servo motors. Main goal is to learn how to configure the camera and develop an image processing pipeline to detect and track the ball and the maze. Finally, participants will test their skills using a physical maze rig, making adjustments and refining their algorithms as needed.",
-    "link": null,
+    "link": "https://www.youtube.com/watch?v=bKt1uYPzA2Q",
     "images": [
-      "/meetup_events_images/zinc-2023/pera-dule.jpeg"
+      "/meetup_events_images/zinc-2023/pera-dule.jpeg",
+      "/meetup_events_images/zinc-2023/predavanje.jpeg",
+      "/meetup_events_images/zinc-2023/lavirint-ucesnici.jpeg",
+      "/meetup_events_images/zinc-2023/radionica.jpeg",
+      "/meetup_events_images/zinc-2023/tim.jpeg"
     ]
   },
   {
