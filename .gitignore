@@ -21,3 +21,10 @@ pnpm-debug.log*
 
 # editor files
 .vscode/
+
+# dotfiles and tool folders (.astro, .playwright-mcp, ...)
+.*
+!.gitignore
+!.gitattributes
+!.github/
+!.devcontainer/
